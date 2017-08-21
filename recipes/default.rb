@@ -5,6 +5,8 @@
 # Copyright 2017, Keyan Pishdadian
 #
 
+include_recipe 'yum-epel'
+
 package 'atop' do
   action node['atop']['action']
   version node['atop']['version']
