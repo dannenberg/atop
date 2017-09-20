@@ -39,12 +39,7 @@ service 'atop' do
   action [:enable, :start]
 end
 
-include_recipe 'logrotate'
-
-logrotate_app 'atop' do
-  path "#{node['atop']['logpath']}/*"
-  rotate 5
-  frequency 'daily'
-  maxsize '500M'
-  options %w(copytruncate missingok notifempty compress)
+cron 'atop log cleanup' do
+  time :daily
+  command 'ls -t /var/log/atop/atop_* | tail -n +15 | xargs rm -f'
 end

@@ -2,6 +2,9 @@
 
 This file is used to list changes made in each version of the atop cookbook.
 
+## 1.1.0
+- [dannenberg] - replace logrotate with daily cron due to atop log structure
+
 ## 1.0.3
 - [dannenberg] - point logrotate at files
 
